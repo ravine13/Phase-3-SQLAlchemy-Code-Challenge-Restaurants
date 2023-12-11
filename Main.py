@@ -49,6 +49,9 @@ class Review(Base):
     rating = Column(Integer)
     restaurant = relationship("Restaurant", backref="restaurant_reviews")
 
+    def __repr__(self):
+        return f"<Review(id={self.id}, customer_id={self.customer_id}, restaurant_id={self.restaurant_id}, rating={self.rating},)>"
+
     def full_review(self):
         return f"Review: {self.restaurant.name} by {self.customer.full_name()}: {self.rating} stars."
 
